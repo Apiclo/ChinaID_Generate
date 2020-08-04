@@ -1,7 +1,7 @@
 # 身份证号码生成器  
 目前版本十分简陋，主体有用的代码只有35行，而且比较臃肿，但 至少可以通过验证。
 
-主要代码都在：[/ID_Generate/id_generate.php] (https://github.com/Apiclo/ChinaID_Generate/blob/master/ID_Generate/id_generate.php)  
+主要代码都在: [/ID_Generate/id_generate.php](https://github.com/Apiclo/ChinaID_Generate/blob/master/ID_Generate/id_generate.php)  
 ## 默认情况与使用提醒
 1. 在2月输入超过28日，会被默认到28日。
 2. 在只有30天的月份输入31日，会被默认为30日。
