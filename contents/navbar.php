@@ -13,7 +13,7 @@ function navDist(){
 $navDist = navDist();
 $logo = '<a href="#"><img class="logo" width="36" height="36" src="../img/logo-black.png"></a>'."\n";
 $navItemOne = '<a href="http://www.ip33.com/shenfenzheng.html"'.$navDist.'>合法性校验</a>'."\n";
-$navItemTwo = '<a href="#"'.$navDist.'>在Github上查看</a>'."\n";
+$navItemTwo = '<a href="https://github.com/Apiclo/ChinaID_Generate"'.$navDist.'>在Github上查看</a>'."\n";
 $floatR = '<div class="item-content">';
 ?>
 

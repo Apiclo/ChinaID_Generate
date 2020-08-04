@@ -55,7 +55,7 @@ elseif($genderCode>999){$genderCode = rand(100,999);}
     function lastNum($str){
         $factor = array(7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2); // 前17位的权重
         $c = array(1,0,'X',9,8,7,6,5,4,3,2); //模11后的对应校验码
-        if(strlen($str)!=17){ exit('使用前请先阅读<a href="readme.md">readme.md</a>');}
+        if(strlen($str)!=17){ exit('使用前请先阅读<a href="https://github.com/Apiclo/ChinaID_Generate/blob/master/readme.md">readme.md</a>');}
         $res = 0;
         for ($i=0; $i<17; $i++){ $res += intval($str[$i]) * $factor[$i];}
         return $c [$res % 11];
