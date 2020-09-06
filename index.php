@@ -4,4 +4,6 @@
 <body>
 <?php include 'contents/navbar.php'?>
 <?php include 'ID_Generate/id_generate.php'?>
+<?php //include 'height.php'?>
+
 <?php include 'contents/footer.php'?>
