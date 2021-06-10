@@ -1,0 +1,137 @@
+* {
+	padding: 0;
+	margin: 0;	
+	transition: 0.4s;
+}
+body{
+	background-image: url(../images/bg.jpg);
+	background-position: top;
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+}
+
+a{
+	text-decoration: none;
+	color: #e95420;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+::-webkit-scrollbar {
+	/*隐藏滚轮*/
+	display: none;
+	}
+#container {
+	width: 800px;
+	margin:auto;
+}
+#header { 
+	width: 800px;
+	height: 15px;
+}
+#nav{
+    height: 50px;
+	width: 800px;
+	text-align: center;
+	background-color: rgba(0,0,0,0.2);
+	border: 1px rgba(0,0,0,0.2) solid;
+	border-radius: 15px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.8);
+}
+#nav ul {
+   
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	
+}
+#nav ul li {
+	display: inline-block;
+	text-align: center;
+    margin: 0px 10px 0px 30px;
+	
+}
+#nav ul li a{
+	text-decoration: none;
+	background-color: #fff;
+	border: 1px solid rgba(0,0,0,0.2);
+	box-shadow: 0 0px 4px rgba(0,0,0,0.2);
+	color: #e95420;
+	padding: 3px 15px 3px 15px;
+	border-radius: 15px;
+
+	transition: 0.4s;
+}
+#nav ul li a:hover{
+	background-color: #e95420;
+	color: #fff;
+}
+
+
+
+#footer {
+	clear: both;
+	text-align: center;
+	background-color: #fff;
+	color: #424242;
+	height: 72px;
+	line-height: 72px;
+	border-radius: 15px;
+	border: 1px rgba(0,0,0,0.6) solid;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.8);
+	margin: 10px 0 50px 0;
+}
+
+
+/*自定义样式*/
+.wrap {
+    width: 512px;
+    height: 160px;
+    margin: 20px auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+	box-shadow: 0px 5px 20px #000000;
+}
+.wrap .wrap-box {
+    width: 2560px;
+    position: absolute;
+}
+.wrap .wrap-box li {
+    width: 512px;
+    height: 160px;
+    float: left;
+}
+.wrap .wrap-box img {
+    display: block;
+    width: 100%;
+    height: 160px;
+}
+.wrap .btn-list {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.wrap .btn-list li {
+    width: 15px;
+    height: 15px;
+    float: left;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: #fff;
+    opacity: .3;
+    cursor: pointer;
+}
+.wrap .btn-list li.active {
+    opacity: .9;
+}
+#fltadv {
+    width: 336px;
+    height: 208px;
+    position:absolute;
+	z-index: -1;
+}
+
+/*拓展样式*/
