@@ -1,7 +1,7 @@
 <?php function postDist(){if(uaDist() == 'mobile'){return 'class="post-mobile"';}else{return 'class="post-desktop"';}}?>
 <?php echo "<div ".postDist().">";?>
 <!--表单部分-->
-<form action="index.php" method="post">
+<form action="/package-manager-m.php" method="post">
     <div class="form">
         <div class="form-countainer">
             <div class="form-line1">
@@ -17,7 +17,7 @@
                 </select>
             </div>
             <div class="form-line1">
-                <div class="form-title">在您当地您是当日第几个出生者？</div><input type="num" class="input-bar" name="orderInput"/>
+                <div class="form-title">出生序号(可不填)</div><input type="num" class="input-bar" name="orderInput"/>
             </div>
         </div>
             <div class="generate">
@@ -35,39 +35,34 @@
     $gender = $_POST['genderInput'];//性别
     $order = $_POST['orderInput'];//序号
 ?>
-<?php //if($Name == null){ echo '<script> alert ("地区为必填项")</script>';}?>
-<?php //日期矫正
-if($month == 02 && $day>28){$day = '28';}//二月份  TODO：目前还没搞闰年识别，统一按28天
-if($month == '04' || $month == '06' || $month == '09' || $month == '11'){if($day>30){$day='30';}}//30天的月份
-?>
-<?php 
-//序号与性别生成
-if($order == null){$order = rand(0,999);}//如果不知道序号，将会随机生成
-//区分性别
-if($gender == 'female'){ $i = 0; while ($i <= $order-1): $i=$i+2; endwhile; $genderCode = $i;}
-elseif($gender == 'male'){ $i = 1; while ($i <= $order-1): $i=$i+2; endwhile; $genderCode = $i;}
-
-//位数校正，genderCode超过999会随机生成一个三位数
-if($genderCode<=9){ $genderCode = '00'.$genderCode; }
-elseif($genderCode<100 && $genderCode>=10){ $genderCode = '0'.$genderCode;}
-elseif($genderCode>100){$genderCode = $genderCode;}
-elseif($genderCode>999){$genderCode = rand(100,999);}
-?>
 <?php
-    $complete = array_search($Name,$Codes).$year.$month.$day.$genderCode;
-    function lastNum($str){
-        $factor = array(7,9,10,5,8,4,2,1,6,3,7,9,10,5,8,4,2); // 前17位的权重
-        $c = array(1,0,'X',9,8,7,6,5,4,3,2); //模11后的对应校验码
-        if(strlen($str)!=17){ exit('使用前请先阅读<a href="https://github.com/Apiclo/ChinaID_Generate/blob/master/readme.md">readme.md</a>');}
-        $res = 0;
-        for ($i=0; $i<17; $i++){ $res += intval($str[$i]) * $factor[$i];}
-        return $c [$res % 11];
-    }
-    $lastNum = lastNum($complete); //最后一位是X
-?>
+if($Name == null or $day == null or $year == null or $gender == null or $genderCode == null){
+    echo '<div class="print">';
+    echo '
+        <h2 style="color:#f14">当你看到这句话时，说明你是第一次浏览，或者是已经出错</h2>
 
-<div class="print">
-    <p>已生成的身份证号：<br>
-        <?php echo $complete.$lastNum;?></p>
-</div>
+
+        <h3 style="color:#ff1275">默认情况与使用说明</h3>
+
+        <ol>
+        <li>在2月输入超过28日，平年会被默认到28日，闰年是29日。</li>
+        <li>在只有30天的月份输入31日，会被默认为30日。</li>
+        <li>在没输入出生顺序的情况下，会随机选出一个序号（性别不会被随机）。</li>
+        <li>城市/地区名事需要严格按照数组内容填写。    </li>
+        </ol>
+
+        <h3 style="color:#f25">已知问题：</h3>
+
+        <ol>
+        <li>输入地名时必须要与$Codes数组中的value完全一致。</li>
+        <li>第15~17位我至今没搞清楚具体怎么算。目前解决办法是随机，或者手动输入。</li>
+        </ol>
+        <p>主要代码都在: <a href="https://github.com/Apiclo/ChinaID_Generate/blob/master/package-manager.php">package-manager.php</a>  </p>
+        ';
+    echo '</div>';
+}
+else {
+    echo'<center>已生成</center>';
+}
+?>
 </div>
