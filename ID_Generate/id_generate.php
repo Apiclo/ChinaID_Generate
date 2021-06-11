@@ -5,7 +5,8 @@
     <div class="form">
         <div class="form-countainer">
             <div class="form-line1">
-                <div class="form-title">地区</div><input type="text" class="input-bar" name="areaInput"/><div class="lookup"><a href="ID_Generate/lookup.php">查询</a></div>
+                <div class="form-title">地区</div><input type="text" class="input-bar" name="areaInput" />
+                <div class="lookup"><a href="ID_Generate/lookup.php">查询</a></div>
             </div>
             <div class="form-line1">
                 <div class="form-title">生日</div><?php include 'date-select.php'?>
@@ -17,12 +18,12 @@
                 </select>
             </div>
             <div class="form-line1">
-                <div class="form-title">出生序号(可不填)</div><input type="num" class="input-bar" name="orderInput"/>
+                <div class="form-title">出生序号(可不填)</div><input type="num" class="input-bar" name="orderInput" />
             </div>
         </div>
-            <div class="generate">
-                <input type="submit" class="button" value="生成"/>
-            </div>
+        <div class="generate">
+            <input type="submit" class="button" value="生成" />
+        </div>
     </div>
 </form>
 <!---PHP部分-->

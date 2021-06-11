@@ -1,11 +1,11 @@
 <form action="" method="get" style="margin:50px">
-	<div style="margin-bottom:30px">
-	    <p>请输入你的姓名：</p>
-		<input type="text" name="name_input" class="input-bar"/>
-		<p>请输入你的身高：</p>
-		<input type="number" name="height_input" class="input-bar"/><span style="margin-left:4px">厘米</span>
-	</div>
-		<input type="submit" class="button" value="确定"/>
+    <div style="margin-bottom:30px">
+        <p>请输入你的姓名：</p>
+        <input type="text" name="name_input" class="input-bar" />
+        <p>请输入你的身高：</p>
+        <input type="number" name="height_input" class="input-bar" /><span style="margin-left:4px">厘米</span>
+    </div>
+    <input type="submit" class="button" value="确定" />
 </form>
 <?php //测试数据库用
 		$name = $_GET['name_input'];

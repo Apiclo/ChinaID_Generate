@@ -11,7 +11,7 @@
     $day = $_POST['dayInput'];//日期
     $gender = $_POST['genderInput'];//性别
     $order = rand(0,999);
-?>  
+?>
 <?php //if($Name == null){ echo '<script> alert ("地区为必填项")</script>';}?>
 <?php //日期矫正
 $month=str_pad($month,2,"0",STR_PAD_LEFT);
@@ -73,7 +73,7 @@ if($_POST['action']=='update'){
 			$sqlstr="update ids set id ='$finalId',area ='$Name',birthyear ='$year',birthmonth ='$month',birthday ='$day',gender ='$gender' where id = '$originId';";
 			$result=mysqli_query($conn,$sqlstr);
 			if($result){
-				if(uaDist()==mobile){echo '<center style="font-size: 2.6rem; margin:50px 0px;"><a href="/package-manager-m.php">修改成功，点击查看</a></center>';}
+				if(uaDist()=='mobile'){echo '<center style="font-size: 2.6rem; margin:50px 0px;"><a href="/package-manager-m.php">修改成功，点击查看</a></center>';}
 				else{echo '<center style="font-size: 2.6rem; margin:50px 0px;"><a href="/package-manager.php">修改成功，点击查看</a></center>';}
 					
 			}	else{

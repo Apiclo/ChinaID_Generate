@@ -1,31 +1,32 @@
 <?php include 'contents/header.php'; error_reporting(0);?>
-		<title>历史记录</title>
-	</head>
-	<body>
-	<?php include 'contents/navbar.php'; ?>
-		<div id="container" >
-			<div id="header"></div>
-			<div id="nav">
-				<ul>
-					<li><a href="index.php">证件介绍</a></li>
-					<li><a href="release.php">使用说明</a></li>
-					<li><a href="desktop-enviroment.php">开始使用</a></li>
-					<li><a href="package-manager.php" style="background-color: #e95420;color: #fff;">历史记录</a></li>
-					<li><a href="intro.php">网站介绍</a></li>
-				</ul>
-			</div>
-			
-			<div id="content">
-				<div id="left">
-					<iframe src="left-nav.html" width="140px" height="500px" frameborder="no"></iframe>
-				</div>
+<title>历史记录</title>
+</head>
 
-				<div id="middle">
-				<div style="height: 600px; width:540px;overflow-y: scroll;overflow-x:hidden;">
-<!---PHP部分-->
+<body>
+    <?php include 'contents/navbar.php'; ?>
+    <div id="container">
+        <div id="header"></div>
+        <div id="nav">
+            <ul>
+                <li><a href="index.php">证件介绍</a></li>
+                <li><a href="release.php">使用说明</a></li>
+                <li><a href="desktop-enviroment.php">开始使用</a></li>
+                <li><a href="package-manager.php" style="background-color: #e95420;color: #fff;">历史记录</a></li>
+                <li><a href="intro.php">网站介绍</a></li>
+            </ul>
+        </div>
+
+        <div id="content">
+            <div id="left">
+                <iframe src="left-nav.html" width="140px" height="500px" frameborder="no"></iframe>
+            </div>
+
+            <div id="middle">
+                <div style="height: 600px; width:540px;overflow-y: scroll;overflow-x:hidden;">
+                    <!---PHP部分-->
 
 
-<?php
+                    <?php
     include '/ID_Generate/areacode.php';//地区转代码
     $Name = $_POST['areaInput'];//地区代码
     $year = $_POST['yearInput'];//年份
@@ -37,8 +38,8 @@
 ?>
 
 
-<?php //if($Name == null){ echo '<script> alert ("地区为必填项")</script>';}?>
-<?php //日期矫正
+                    <?php //if($Name == null){ echo '<script> alert ("地区为必填项")</script>';}?>
+                    <?php //日期矫正
 $month=str_pad($month,2,"0",STR_PAD_LEFT);//在例如1月-9月时，会在前加一个0来补够两位数
 $day=str_pad($day,2,"0",STR_PAD_LEFT);//同上
 
@@ -48,7 +49,7 @@ if($month == 02 && $day>28){//判断二月份的平闰年，超过28号的，闰
 
 if($month == '04' || $month == '06' || $month == '09' || $month == '11'){if($day>30){$day='30';}}//在只有30天的月份输入31号会强制成30号
 ?>
-<?php 
+                    <?php 
 //序号与性别生成
 if($order == null){$order = rand(0,999);}//如果不知道序号，将会随机生成
 //区分性别
@@ -62,7 +63,7 @@ elseif($genderCode>100){$genderCode = $genderCode;}
 elseif($genderCode>999){$genderCode = rand(100,999);}
 ?>
 
-<?php
+                    <?php
 if($day == null or $year == null or $gender == null or $genderCode == null){
 	echo '<!--不是从desktop-enviroment.php来的，无需弹出错误提示-->';
 	$greenCode = 1;
@@ -92,16 +93,19 @@ else{
 ?>
 
 
-<div class="print" <?php if($greenCode == 1 or $Name ==null){echo 'style="display:none;"';}else{echo 'style="width:488px"';}?>>
-    <h2>已生成的身份证号：</h2><h1><?php echo $complete.$lastNum;?></h1>
+                    <div class="print"
+                        <?php if($greenCode == 1 or $Name ==null){echo 'style="display:none;"';}else{echo 'style="width:488px"';}?>>
+                        <h2>已生成的身份证号：</h2>
+                        <h1><?php echo $complete.$lastNum;?></h1>
 
-	<span>出生地区：<?php echo $Name?></span><br>
-	<span>出生日期：<?php echo $year.'年'.$month.'月'.$day.'日'?></span><br>
-	<span>性别：<?php if($gender=='female'){echo '女性';}else{echo '男性';}?></span><br>
-	<span>校验码<?php echo $lastNum?>是否正确：<?php echo '是<!--已经经过lastNum()计算的，必然是正确的，否则会报错，并且不会生成-->';?></span><br>
-	<span>请求时间：<?php date_default_timezone_set("PRC"); echo date("Y年m月d日,H:i:s",$gentime);?></span><br>
-	<a onclick="window.location.reload();" style="font-size:1.25rem;border-radius: 50px;border: #e95420 2px solid;padding:2px 20px;">再来一条</a>
-	<?php 
+                        <span>出生地区：<?php echo $Name?></span><br>
+                        <span>出生日期：<?php echo $year.'年'.$month.'月'.$day.'日'?></span><br>
+                        <span>性别：<?php if($gender=='female'){echo '女性';}else{echo '男性';}?></span><br>
+                        <span>校验码<?php echo $lastNum?>是否正确：<?php echo '是<!--已经经过lastNum()计算的，必然是正确的，否则会报错，并且不会生成-->';?></span><br>
+                        <span>请求时间：<?php date_default_timezone_set("PRC"); echo date("Y年m月d日,H:i:s",$gentime);?></span><br>
+                        <a onclick="window.location.reload();"
+                            style="font-size:1.25rem;border-radius: 50px;border: #e95420 2px solid;padding:2px 20px;">再来一条</a>
+                        <?php 
 		$finalId = $complete.$lastNum;
 		include '/contents/sqlcon.php';
         if($month==00 or $day == 00 or $Name ==null){
@@ -110,9 +114,9 @@ else{
 		else{
 			$result = mysqli_query($conn,"insert into ids (id,area,birthyear,birthmonth,birthday,gender,gentime) values ('$finalId','$Name','$year','$month','$day','$gender','$gentime');");
 			}?>
-</div>
+                    </div>
 
-        <?php 
+                    <?php 
 		$page=empty($_GET['page']) ? 1 : $_GET['page'];
         $selectid = mysqli_query($conn,"SELECT id FROM ids;");
         $num_rows = mysqli_num_rows($selectid);
@@ -135,8 +139,8 @@ else{
 		$selectallstr = "SELECT id,area,birthyear,birthmonth,birthday,gender FROM ids ORDER BY gentime DESC limit ".$offset . ',' .$pageNum;
 		$selectall = mysqli_query($conn,$selectallstr);
 		?>
-		<div class="print" style="width:488px">
-			<?php
+                    <div class="print" style="width:488px">
+                        <?php
        		print "<p>网站共生成过 $num_rows 条历史身份证号</p>\n";
 				echo '<style>
 						table{border-spacing:0px; width:485px;margin:10px 0px;}
@@ -158,25 +162,26 @@ else{
 				echo "<a href='package-manager.php?page=1'>首页</a>  <a href='package-manager.php?page=$prev'>上一页</a> <a href='package-manager.php?page=$next'>下一页</a> <a href='package-manager.php?page=$pageCount'> 尾页</a>      ";
         	mysqli_close( $conn );
 			?>
-       
-		</div>
 
-				</div>        
-				</div>
+                    </div>
+
+                </div>
+            </div>
 
 
-			
-				<div id="right">
-						<p class="search-title">页面备注</p>
-                        <p class="mark">目前BUG：带X的无法删除</p>
-                        <div class="mark">学号：196102010650</div>
-				</div>
 
-			<div id="footer">
-			历史记录/package-manager
-			<a href="index.php">回到主页</a>
-			</div>
+            <div id="right">
+                <p class="search-title">页面备注</p>
+                <p class="mark">目前BUG：带X的无法删除</p>
+                <div class="mark">学号：196102010650</div>
+            </div>
 
-		</div>
-	</body>
+            <div id="footer">
+                历史记录/package-manager
+                <a href="index.php">回到主页</a>
+            </div>
+
+        </div>
+</body>
+
 </html>
