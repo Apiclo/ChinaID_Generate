@@ -1,5 +1,6 @@
 # 中国第二代身份证号码生成器  
-目前十分臃肿，而且有大量冗余代码，至少能用，应付大专毕设。
+目前十分臃肿，而且有大量冗余代码，至少能用，应付大专毕设。 
+
 Demo: [learning.siralop.top](https://learning.siralop.top/) 
 
 主要代码都在: [/desktop-environment.php](https://github.com/Apiclo/ChinaID_Generate/blob/master/desktop-environment.php)  和 [/package-manager.php](https://github.com/Apiclo/ChinaID_Generate/blob/master/package-manager.php)  
