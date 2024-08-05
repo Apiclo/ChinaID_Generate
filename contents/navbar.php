@@ -12,7 +12,7 @@ function navDist(){
 }
 $navDist = navDist();
 $logo = '<a href="index.php"><img class="logo" width="36" height="36" src="../img/logo-black.png"></a>'."\n";
-$title = '<a href="index.php" class="title">身份证号码管理系统</a>';
+$title = '<a href="index.php" class="title">计算器</a>';
 $navItemOne = '<a href="http://www.ip33.com/shenfenzheng.html"'.$navDist.'>合法性校验</a>'."\n";
 $navItemTwo = '<a href="/index-m.php"'.$navDist.'>简洁版</a>'."\n";
 $navItemTree = '<a href="/index.php"'.$navDist.'>桌面版</a>'."\n";

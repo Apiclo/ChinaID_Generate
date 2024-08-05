@@ -42,7 +42,8 @@ if($Name == null or $day == null or $year == null or $gender == null or $genderC
     echo '
         <h2 style="color:#f14">当你看到这句话时，说明你是第一次浏览，或者是已经出错</h2>
 
-
+        <h3 style="color:#ff1275">重要：由于数据库出错，删除历史记录功能正在维护中，请等待维护完成，造成不便敬请谅解</h3>
+        <br><br>
         <h3 style="color:#ff1275">默认情况与使用说明</h3>
 
         <ol>

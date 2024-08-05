@@ -1,53 +1,61 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<link href="css/upanddown.css" rel="stylesheet" type="text/css">
-		<link href="css/mid.css" rel="stylesheet" type="text/css">
-		<link href="css/list.css" rel="stylesheet" type="text/css">
-		<link href="css/per-color.css" rel="stylesheet" type="text/css">
-		<meta charset="utf-8">
-		<!--650王超磊-->
-		<title>左侧导航</title>
-        <style>
-        #download {
-            visibility:hidden;
-			position:absolute;
-			top:190px;
-			left:-1px;
-        }
-		#cnppa{
-			visibility:hidden;
-			position:absolute;
-			top:190px;
-			left:-1px;
+
+<head>
+	<link href="css/upanddown.css" rel="stylesheet" type="text/css">
+	<link href="css/mid.css" rel="stylesheet" type="text/css">
+	<link href="css/list.css" rel="stylesheet" type="text/css">
+	<link href="css/per-color.css" rel="stylesheet" type="text/css">
+	<meta charset="utf-8">
+	<!--650王超磊-->
+	<title>左侧导航</title>
+	<style>
+		body {
+			background: none;
+		}
+
+		#download {
+			visibility: hidden;
+			position: absolute;
+			top: 190px;
+			left: -1px;
+		}
+
+		#cnppa {
+			visibility: hidden;
+			position: absolute;
+			top: 190px;
+			left: -1px;
 
 		}
-        </style>
-	</head>		
-    <body style="background-image:none;margin-left:5px;">		
-                <div id="left">
-					<ul>
-						<li style="background-color: #e95420;color: #fff;">法律法规</li>
-                        <li><a href="http://www.sac.gov.cn/sbgs/flfg/fl/sjbzdfl/201505/t20150518_188421.htm" target="new">身份证简介</a></li>
-						<li><a href="http://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=080D6FBF2BB468F9007657F26D60013E" target="new"
-						onmouseover="document.getElementById('cnppa').style.visibility='visible'"
-                        onmouseout="document.getElementById('cnppa').style.visibility='hidden'"
-						>身份证国标</a></li>
 
-						
-						<li><a href="http://www.hncourt.gov.cn/public/detail.php?id=5981" target="new" 
-                        onmouseover="document.getElementById('download').style.visibility='visible'"
-                        onmouseout="document.getElementById('download').style.visibility='hidden'"
-                        >冒用违法
-                        </a></li>
-                        
-					</ul>
-					<div id="download" class="mark">请勿将生成的身份证号码用于非法用途！</div>
-                    <div id="cnppa" class="mark">标准号<br>GB 11643-1999<br>由国家质量技术监督局发布<br>自1999/07/01实施至今</div>
-                    
-					
-				</div>
-				<!--650王超磊-->
+	</style>
+</head>
+
+<body style="background-image:none;margin-left:5px;">
+	<div id="left">
+		<ul>
+			<li style="background-color: #e95420;color: #fff;">法律法规</li>
+			<li><a href="http://www.sac.gov.cn/sbgs/flfg/fl/sjbzdfl/201505/t20150518_188421.htm" target="new">身份证简介</a>
+			</li>
+			<li><a href="http://openstd.samr.gov.cn/bzgk/gb/newGbInfo?hcno=080D6FBF2BB468F9007657F26D60013E"
+					target="new" onmouseover="document.getElementById('cnppa').style.visibility='visible'"
+					onmouseout="document.getElementById('cnppa').style.visibility='hidden'">身份证国标</a></li>
+
+
+			<li><a href="http://www.hncourt.gov.cn/public/detail.php?id=5981" target="new"
+					onmouseover="document.getElementById('download').style.visibility='visible'"
+					onmouseout="document.getElementById('download').style.visibility='hidden'">冒用违法
+				</a></li>
+
+		</ul>
+		<div id="download" class="mark">请勿将生成的身份证号码用于非法用途！</div>
+		<div id="cnppa" class="mark">标准号<br>GB 11643-1999<br>由国家质量技术监督局发布<br>自1999/07/01实施至今</div>
+
+
+	</div>
+	<!--650王超磊-->
 
 </body>
+
 </html>

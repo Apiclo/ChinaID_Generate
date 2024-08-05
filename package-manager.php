@@ -5,30 +5,30 @@ error_reporting(0);
 </head>
 
 <body>
-	<?php include 'contents/navbar.php'; ?>
-	<div id="container">
-		<div id="header"></div>
-		<div id="nav">
-			<ul>
-				<li><a href="index.php">证件介绍</a></li>
-				<li><a href="release.php">使用说明</a></li>
-				<li><a href="desktop-enviroment.php">开始使用</a></li>
-				<li><a href="package-manager.php" style="background-color: #e95420;color: #fff;">历史记录</a></li>
-				<li><a href="intro.php">网站介绍</a></li>
-			</ul>
-		</div>
+    <?php include 'contents/navbar.php'; ?>
+    <div id="container">
+        <div id="header"></div>
+        <div id="nav">
+            <ul>
+                <li><a href="index.php">证件介绍</a></li>
+                <li><a href="release.php">使用说明</a></li>
+                <li><a href="desktop-enviroment.php">开始使用</a></li>
+                <li><a href="package-manager.php" style="background-color: #e95420;color: #fff;">历史记录</a></li>
+                <li><a href="intro.php">网站介绍</a></li>
+            </ul>
+        </div>
 
-		<div id="content">
-			<div id="left">
-				<iframe src="left-nav.html" width="140px" height="500px" frameborder="no"></iframe>
-			</div>
+        <div id="content">
+            <div id="left">
+                <iframe src="left-nav.html" width="140px" height="500px" frameborder="no"></iframe>
+            </div>
 
-			<div id="middle">
-				<div style="height: 600px; width:540px;overflow-y: scroll;overflow-x:hidden;">
-					<!---PHP部分-->
+            <div id="middle">
+                <div style="height: 600px; width:540px;overflow-y: scroll;overflow-x:hidden;">
+                    <!---PHP部分-->
 
 
-					<?php
+                    <?php
 					include 'ID_Generate/areacode.php'; //地区转代码
 					$Name = $_POST['areaInput']; //地区代码
 					$year = $_POST['yearInput']; //年份
@@ -40,9 +40,9 @@ error_reporting(0);
 					?>
 
 
-					<?php //if($Name == null){ echo '<script> alert ("地区为必填项")</script>';}
+                    <?php //if($Name == null){ echo '<script> alert ("地区为必填项")</script>';}
 					?>
-					<?php //日期矫正
+                    <?php //日期矫正
 					$month = str_pad($month, 2, "0", STR_PAD_LEFT); //在例如1月-9月时，会在前加一个0来补够两位数
 					$day = str_pad($day, 2, "0", STR_PAD_LEFT); //同上
 
@@ -68,7 +68,7 @@ error_reporting(0);
 						}
 					} //在只有30天的月份输入31号会强制成30号
 					?>
-					<?php
+                    <?php
 					//序号与性别生成
 					if ($order == null) {
 						$order = rand(0, 999);
@@ -98,7 +98,7 @@ error_reporting(0);
 					}
 					?>
 
-					<?php
+                    <?php
 					if ($day == null or $year == null or $gender == null or $genderCode == null) {
 						echo '<!--不是从desktop-enviroment.php来的，无需弹出错误提示-->';
 						$greenCode = 1;
@@ -131,26 +131,27 @@ error_reporting(0);
 					?>
 
 
-					<div class="print" <?php if ($greenCode == 1 or $Name == null) {
+                    <div class="print" <?php if ($greenCode == 1 or $Name == null) {
 											echo 'style="display:none;"';
 										} else {
 											echo 'style="width:488px"';
 										} ?>>
-						<h2>已生成的身份证号：</h2>
-						<h1><?php echo $complete . $lastNum; ?></h1>
+                        <h2>已生成的身份证号：</h2>
+                        <h1><?php echo $complete . $lastNum; ?></h1>
 
-						<span>出生地区：<?php echo $Name ?></span><br>
-						<span>出生日期：<?php echo $year . '年' . $month . '月' . $day . '日' ?></span><br>
-						<span>性别：<?php if ($gender == 'female') {
+                        <span>出生地区：<?php echo $Name ?></span><br>
+                        <span>出生日期：<?php echo $year . '年' . $month . '月' . $day . '日' ?></span><br>
+                        <span>性别：<?php if ($gender == 'female') {
 										echo '女性';
 									} else {
 										echo '男性';
 									} ?></span><br>
-						<span>校验码<?php echo $lastNum ?>是否正确：<?php echo '是<!--已经经过lastNum()计算的，必然是正确的，否则会报错，并且不会生成-->'; ?></span><br>
-						<span>请求时间：<?php date_default_timezone_set("PRC");
+                        <span>校验码<?php echo $lastNum ?>是否正确：<?php echo '是<!--已经经过lastNum()计算的，必然是正确的，否则会报错，并且不会生成-->'; ?></span><br>
+                        <span>请求时间：<?php date_default_timezone_set("PRC");
 									echo date("Y年m月d日,H:i:s", $gentime); ?></span><br>
-						<a onclick="window.location.reload();" style="font-size:1.25rem;border-radius: 50px;border: #e95420 2px solid;padding:2px 20px;">再来一条</a>
-						<?php
+                        <a onclick="window.location.reload();"
+                            style="font-size:1.25rem;border-radius: 50px;border: #e95420 2px solid;padding:2px 20px;">再来一条</a>
+                        <?php
 						$finalId = $complete . $lastNum;
 						include 'contents/sqlcon.php';
 						if ($month == 00 or $day == 00 or $Name == null) {
@@ -158,9 +159,9 @@ error_reporting(0);
 						} else {
 							$result = mysqli_query($conn, "insert into ids (id,area,birthyear,birthmonth,birthday,gender,gentime) values ('$finalId','$Name','$year','$month','$day','$gender','$gentime');");
 						} ?>
-					</div>
+                    </div>
 
-					<?php
+                    <?php
 					$page = empty($_GET['page']) ? 1 : $_GET['page'];
 					$selectid = mysqli_query($conn, "SELECT id FROM ids;");
 					$num_rows = mysqli_num_rows($selectid);
@@ -183,8 +184,8 @@ error_reporting(0);
 					$selectallstr = "SELECT id,area,birthyear,birthmonth,birthday,gender FROM ids ORDER BY gentime DESC limit " . $offset . ',' . $pageNum;
 					$selectall = mysqli_query($conn, $selectallstr);
 					?>
-					<div class="print" style="width:488px">
-						<?php
+                    <div class="print" style="width:488px">
+                        <?php
 						print "<p>网站共生成过 $num_rows 条历史身份证号</p>\n";
 						echo '<style>
 						table{border-spacing:0px; width:485px;margin:10px 0px;}
@@ -199,9 +200,8 @@ error_reporting(0);
 								echo '<td>' . $row[$i] . '</td>';
 							}
 							if ($row[4] != null) {
-								echo '<td><a style="color:#6e6;" href=/contents/sqlupdate.php?action=update&id=' . $row[0] . '>修改</a></td><td><a href=/contents/sqldel.php?act=del&id=' . $row[0] . " onclick='return.del();'>删除</a></td>";
-							}
-							echo '</tr>';
+								echo '<td><a style="color:#6e6;" href=/contents/sqlupdate.php?action=update&id='.$row[0].'>修改</a></td><td><a href=/contents/sqldel.php?act=del&id='.$row[0]." onclick='return.del();'>删除</a></td>";}
+				            echo '</tr>';
 						}
 
 						echo '</table>';
@@ -209,38 +209,39 @@ error_reporting(0);
 						mysqli_close($conn);
 						?>
 
-					</div>
+                    </div>
 
-				</div>
-			</div>
+                </div>
+            </div>
 
 
 
-			<div id="right">
-				<p class="search-title">页面备注</p>
-				<p class="mark"><b style="text-align:center;">一言</b><br />
-					<span id="hitokoto"><a href="#" id="hitokoto_text" style="color:#222222;font-weight:300;">:D 获取中...</a></span>
+            <div id="right">
+                <p class="search-title">页面备注</p>
+                <p class="mark">由于数据库出错，目前删除历史记录功能正在维护中，暂时无法删除，请等待维护完成，造成不便敬请谅解</p>
+                <p class="mark"><b style="text-align:center;">一言</b><br />
+                    <span id="hitokoto"><a href="#" id="hitokoto_text" style="color:#222222;font-weight:300;">:D
+                            获取中...</a></span>
 
-					<script>
-						fetch('https://v1.hitokoto.cn')
-							.then(response => response.json())
-							.then(data => {
-								const hitokoto = document.getElementById('hitokoto_text')
-								hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
-								hitokoto.innerText = data.hitokoto
-							})
-							.catch(console.error)
-					</script>
-				</p>
-				<div class="mark">学号：196102010650</div>
-			</div>
+                    <script>
+                    fetch('https://v1.hitokoto.cn')
+                        .then(response => response.json())
+                        .then(data => {
+                            const hitokoto = document.getElementById('hitokoto_text')
+                            hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+                            hitokoto.innerText = data.hitokoto
+                        })
+                        .catch(console.error)
+                    </script>
+                </p>
+            </div>
 
-			<div id="footer">
-				历史记录/package-manager
-				<a href="index.php">回到主页</a>
-			</div>
+            <div id="footer">
+                历史记录/package-manager
+                <a href="index.php">回到主页</a>
+            </div>
 
-		</div>
+        </div>
 </body>
 
 </html>

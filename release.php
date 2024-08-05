@@ -50,7 +50,6 @@
 
 
                 <p class="search-title">页面备注</p>
-                <div class="mark">学号：196102010650</div>
 
             </div>
         </div>
