@@ -1,6 +1,6 @@
 <?php include 'contents/header.php'; error_reporting(0);?>
 <!--移动端-->
-<title>身份证号码生成器</title>
+<title>计算器</title>
 </head>
 
 <body>
